@@ -1,15 +1,19 @@
 var audio = document.getElementById("audio");
 var playPauseBTN = document.getElementById("playPauseBTN");
-var count = 0;
+var playIcon = document.getElementById("playIcon");
+var pauseIcon = document.getElementById("pauseIcon");
+var isPlaying = false;
 
 function playPause(){
-	if(count == 0){
-		count = 1;
-		audio.play();
-		playPauseBTN.innerHTML = "Pause";
-	}else{
-	count = 0;
-	audio.pause();
-	playPauseBTN.innerHTML = "Play";
+	if (!isPlaying) {
+	    isPlaying = true;
+	    audio.play();
+	    playIcon.classList.add("hidden");
+	    pauseIcon.classList.remove("hidden");
+	} else {
+	    isPlaying = false;
+	    audio.pause();
+	    playIcon.classList.remove("hidden");
+	    pauseIcon.classList.add("hidden");
 	}
 }
